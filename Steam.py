@@ -1,5 +1,6 @@
 import json
-from platform import system as os_sys
+from platform import system as os_type
+from os import path as os_path
 
 
 class Steam:
@@ -16,18 +17,21 @@ class Steam:
         self.generate_games(self)
 
     def find_paths(self):
-        if os_sys() == 'Windows':
+        if os_type() == 'Windows':
             self.install_path = 'C:/Program Files (x86)/Steam'
             self.vdf_path = 'C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf'
 
-        elif os_sys() == 'Linux':
-            self.install_path = '$HOME/.steam/bin/'
-            self.vdf_path = '$HOME/.steam/steam/steamapps/libraryfolders.vdf'
+        elif os_type() == 'Linux':
+            self.install_path = os_path.expanduser('~') + '/.steam/bin'
+            self.vdf_path = os_path.expanduser('~') + '/.steam/steam/steamapps/libraryfolders.vdf'
 
-        else:  # Darwin(MacOS)
+        elif os_type() == 'Darwin':
             print('TODO: Not yet implemented')
             self.install_path = ''
             self.vdf_path = ''
+
+        else:
+            print('Error: unable to identify operating system')
 
     def get_install_path(self):
         return self.install_path
