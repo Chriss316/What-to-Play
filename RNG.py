@@ -1,5 +1,5 @@
-import math
-import random
+from math import floor
+from random import random
 
 
 class RNG:
@@ -8,7 +8,7 @@ class RNG:
         self.m = 0x80000000  # 2**31
         self.a = 1103515245
         self.c = 12345
-        self.state = seed if seed else math.floor(random.random() * (self.m - 1))
+        self.state = seed if seed else floor(random() * (self.m - 1))
 
     def next_int(self):
         self.state = (self.a * self.state + self.c) % self.m
@@ -23,7 +23,7 @@ class RNG:
         #   can't modulu nextInt because of weak randomness in lower bits
         range_size = end - start
         random_under_one = self.next_int() / self.m
-        return start + math.floor(random_under_one * range_size)
+        return start + floor(random_under_one * range_size)
 
     def rng_list(self, number_list):
         return number_list[self.next_range(0, len(number_list))]

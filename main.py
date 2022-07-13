@@ -1,13 +1,14 @@
 import RNG
 import Steam
-import subprocess
-from platform import system as os_type
+
 from os import system as os_sys
+from platform import system as os_type
+from subprocess import call as subp_call
 
 
 def launch_game(path, game):
     if os_type() == 'Windows':
-        subprocess.call(path + "/Steam.exe -applaunch " + game)
+        subp_call(path + "/Steam.exe -applaunch " + game)
     elif os_type() == 'Linux' or os_type() == 'Darwin':
         os_sys('steam steam://rungameid/' + game)
     else:

@@ -1,6 +1,6 @@
-import json
-from platform import system as os_type
 from os import path as os_path
+from json import loads as json_load
+from platform import system as os_type
 
 
 class Steam:
@@ -68,7 +68,7 @@ class Steam:
 
     @staticmethod
     def generate_games(self):
-        json_dict = json.loads(self.json_vdf)
+        json_dict = json_load(self.json_vdf)
 
         # Generate a list of all app IDs from the VDF file
         for app_lists in json_dict:
