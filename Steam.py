@@ -26,12 +26,11 @@ class Steam:
             self.vdf_path = os_path.expanduser('~') + '/.steam/steam/steamapps/libraryfolders.vdf'
 
         elif os_type() == 'Darwin':
-            print('TODO: Not yet implemented')
-            self.install_path = ''
-            self.vdf_path = ''
+            self.install_path = os_path.expanduser('~') + '/Library/Application Support/Steam'
+            self.vdf_path = os_path.expanduser('~') + '/Library/Application Support/Steam/steamapps/libraryfolders.vdf'
 
         else:
-            print('Error: unable to identify operating system')
+            print('Class Error: unable to identify operating system')
 
     def get_install_path(self):
         return self.install_path

@@ -12,7 +12,7 @@ def launch_game(path, game):
     elif os_type() == 'Linux' or os_type() == 'Darwin':
         os_sys('steam steam://rungameid/' + game)
     else:
-        print('Error: unable to identify operating system')
+        print('Funtion Error: unable to identify operating system')
 
 
 def run():
