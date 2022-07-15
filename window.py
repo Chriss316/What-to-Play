@@ -1,3 +1,5 @@
+from onefile import get_rel_path
+
 from enum import Enum
 
 from tkinter import Tk, Button, Label, Frame, PhotoImage
@@ -36,9 +38,7 @@ class WTPApp:
             int(self.screen_height / 2 - self.window_height / 2))
         )
         self.win.title('What to Play?')
-        self.win.iconbitmap(
-            'C:\\Users\\chris\\Documents\\1. Primary Documents\\Coding\\Projects\\Python\\Pycharm\\WhatToPlay\\icon.ico'
-        )
+        self.win.iconbitmap(get_rel_path('assets/icon.ico'))
         self.win.configure(bg=Colours.light_green)
         self.win.resizable(0, 0)
 
@@ -50,9 +50,7 @@ class WTPApp:
         return self.win.mainloop()
 
     def create_background(self):
-        bg_image_file = PIL.Image.open(
-            'C:\\Users\\chris\\Documents\\1. Primary Documents\\Coding\\Projects\\Python\\Pycharm\\WhatToPlay\\background.png'
-        )
+        bg_image_file = PIL.Image.open(get_rel_path('assets/background.png'))
         bg_image_obj = PIL.ImageTk.PhotoImage(bg_image_file)
 
         lable_img = Label(self.win, image=bg_image_obj, bg=Colours.light_green)
