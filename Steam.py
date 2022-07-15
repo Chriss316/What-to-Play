@@ -8,7 +8,6 @@ class Steam:
         # Variables
         self.app_id_list = []
         self.json_vdf = ''
-        self.install_path = ''
         self.vdf_path = ''
 
         # Functions
@@ -18,22 +17,16 @@ class Steam:
 
     def find_paths(self):
         if os_type() == 'Windows':
-            self.install_path = 'C:/Program Files (x86)/Steam'
             self.vdf_path = 'C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf'
 
         elif os_type() == 'Linux':
-            self.install_path = os_path.expanduser('~') + '/.steam/bin'
             self.vdf_path = os_path.expanduser('~') + '/.steam/steam/steamapps/libraryfolders.vdf'
 
         elif os_type() == 'Darwin':
-            self.install_path = os_path.expanduser('~') + '/Library/Application Support/Steam'
             self.vdf_path = os_path.expanduser('~') + '/Library/Application Support/Steam/steamapps/libraryfolders.vdf'
 
         else:
             print('Class Error: unable to identify operating system')
-
-    def get_install_path(self):
-        return self.install_path
 
     def get_vdf_path(self):
         return self.vdf_path

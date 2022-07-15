@@ -25,5 +25,5 @@ class RNG:
         random_under_one = self.next_int() / self.m
         return start + floor(random_under_one * range_size)
 
-    def rng_list(self, number_list):
-        return number_list[self.next_range(0, len(number_list))]
+    def rng_list(self, id_list):
+        return id_list[self.next_range(0, len(id_list))]
