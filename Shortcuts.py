@@ -1,6 +1,5 @@
-import lnk_helper
-
 from os import listdir, path
+from win32com.client import Dispatch
 
 
 class Shortcuts:
@@ -32,7 +31,13 @@ class Shortcuts:
 
     @staticmethod
     def read_lnk_path(file):
-        return lnk_helper.get_target(file)
+        shell = Dispatch("WScript.Shell")
+        shortcut = shell.CreateShortCut(file)
+
+        target_path = shortcut.Targetpath
+        target_args = shortcut.Arguments
+
+        return target_path + ' ' + target_args
 
     @staticmethod
     def read_url_path(file):
@@ -41,4 +46,3 @@ class Shortcuts:
 
         # Split URL, get last index and remove new line char then return as int
         return int(lines[5].split('/')[-1].replace('\n', ''))
-
